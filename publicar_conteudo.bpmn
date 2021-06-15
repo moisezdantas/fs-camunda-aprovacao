@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0kxr2ev" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:collaboration id="Collaboration_0bt41bm">
+    <bpmn:participant id="Participant_0yxqc6y" name="Publicar conteúdo" processRef="publicar-conteudo" />
+  </bpmn:collaboration>
+  <bpmn:process id="publicar-conteudo" name="Publicar conteúdo" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0oa3jmb">
+      <bpmn:lane id="Lane_1sat2if" name="Emissora">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0aium43</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0l78ynu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0j02f8h</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_08ou1xl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0aium43" name="Publicar conteúdo na emissora">
+      <bpmn:incoming>Flow_08ou1xl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0byfltq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0l78ynu" name="Notificar cliente/produtora">
+      <bpmn:incoming>Flow_0byfltq</bpmn:incoming>
+      <bpmn:outgoing>Flow_14qql14</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0j02f8h">
+      <bpmn:incoming>Flow_14qql14</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_08ou1xl" sourceRef="StartEvent_1" targetRef="Activity_0aium43" />
+    <bpmn:sequenceFlow id="Flow_0byfltq" sourceRef="Activity_0aium43" targetRef="Activity_0l78ynu" />
+    <bpmn:sequenceFlow id="Flow_14qql14" sourceRef="Activity_0l78ynu" targetRef="Event_0j02f8h" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0bt41bm">
+      <bpmndi:BPMNShape id="Participant_0yxqc6y_di" bpmnElement="Participant_0yxqc6y" isHorizontal="true">
+        <dc:Bounds x="129" y="79" width="601" height="301" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1sat2if_di" bpmnElement="Lane_1sat2if" isHorizontal="true">
+        <dc:Bounds x="159" y="79" width="571" height="301" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_08ou1xl_di" bpmnElement="Flow_08ou1xl">
+        <di:waypoint x="248" y="220" />
+        <di:waypoint x="310" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0byfltq_di" bpmnElement="Flow_0byfltq">
+        <di:waypoint x="410" y="220" />
+        <di:waypoint x="490" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14qql14_di" bpmnElement="Flow_14qql14">
+        <di:waypoint x="590" y="220" />
+        <di:waypoint x="662" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nwk4w2_di" bpmnElement="Activity_0aium43">
+        <dc:Bounds x="310" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cesjb4_di" bpmnElement="Activity_0l78ynu">
+        <dc:Bounds x="490" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0j02f8h_di" bpmnElement="Event_0j02f8h">
+        <dc:Bounds x="662" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
